@@ -12,7 +12,7 @@ router.use(decodeUserFromToken)
 
 router.post('/', checkAuth, connectsCtrl.create)
 router.put('/:id', checkAuth, connectsCtrl.update)
-// route.delete('/:id', check)
+route.delete('/:id', checkAuth, connectsCtrl.delete)
 
 module.exports = router
 

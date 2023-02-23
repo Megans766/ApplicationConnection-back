@@ -25,9 +25,22 @@ async function update(req, res) {
   }
 }
 
-
+async function deleteAppEntry(req, res) {
+  try {
+    const removeAppEntryRows = await Connect.destroy(
+      { where: { 
+        id: req.params.id,
+        profileId: req.user.profile.id
+      }}
+    )
+    res.status(500).json(removeAppEntryRows)
+  } catch (error) {
+    res.status(500).json({ err: error })
+  }
+}
 
 module.exports = {
   create,
   update,
+  delete: deleteAppEntry
 }
