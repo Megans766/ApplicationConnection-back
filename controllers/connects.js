@@ -10,6 +10,15 @@ async function create(req, res) {
   }
 }
 
+async function index(req, res) {
+  try {
+    const appEntries = await Connect.findAll()
+    res.status(200).json(appEntries)
+  } catch (error) {
+    res.status(500).json({ err: error })
+  }
+}
+
 async function update(req, res) {
   try {
     const appEntry = await Connect.update(
@@ -41,6 +50,7 @@ async function deleteAppEntry(req, res) {
 
 module.exports = {
   create,
+  index,
   update,
   delete: deleteAppEntry
 }
