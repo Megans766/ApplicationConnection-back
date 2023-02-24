@@ -31,8 +31,9 @@ async function addPhoto(req, res) {
 async function showProfile(req, res) {
   try {
     const profile = await Profile.findByPk(req.params.id)
-    res.statuss(201).json(profile)
+    res.status(201).json(profile)
   } catch (error) {
+    console.log(error)
     res.status(500).json({ err: error })
   }
 }
