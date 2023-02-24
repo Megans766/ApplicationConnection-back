@@ -28,4 +28,13 @@ async function addPhoto(req, res) {
   }
 }
 
-module.exports = { index, addPhoto }
+async function showProfile(req, res) {
+  try {
+    const profile = await Profile.findByPk(req.params.id)
+    res.statuss(201).json(profile)
+  } catch (error) {
+    res.status(500).json({ err: error })
+  }
+}
+
+module.exports = { index, addPhoto, showProfile }
