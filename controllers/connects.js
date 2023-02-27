@@ -36,13 +36,9 @@ async function update(req, res) {
 
 async function deleteAppEntry(req, res) {
   try {
-    const removeAppEntryRows = await Connect.destroy(
-      { where: { 
-        id: req.params.id,
-        profileId: req.user.profile.id
-      }}
-    )
-    res.status(500).json(removeAppEntryRows)
+    const removeAppEntryRows = await Connect.findByPk(req.params.id)
+    await removeAppEntryRows.destroy()
+    res.status(200).json(removeAppEntryRows)
   } catch (error) {
     res.status(500).json({ err: error })
   }
