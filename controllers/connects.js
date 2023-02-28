@@ -21,13 +21,9 @@ async function index(req, res) {
 
 async function update(req, res) {
   try {
-    const appEntry = await Connect.update(
-      req.body,
-      { where: {
-        id: req.params.id,
-        profileId: req.user.profile.id
-      }}
-    )
+    const appEntry = await Connect.findByPk(req.params.id)
+    appEntry.set(req.body)
+    appEntry.save()
     res.status(200).json(appEntry)
   } catch (error) {
     res.status(500).json({ err: error })
