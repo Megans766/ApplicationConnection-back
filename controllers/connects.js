@@ -32,9 +32,9 @@ async function update(req, res) {
 
 async function deleteAppEntry(req, res) {
   try {
-    const removeAppEntryRows = await Connect.findByPk(req.params.id)
-    await removeAppEntryRows.destroy()
-    res.status(200).json(removeAppEntryRows)
+    const removeAppEntry = await Connect.findByPk(req.params.id)
+    await removeAppEntry.destroy()
+    res.status(200).json(removeAppEntry)
   } catch (error) {
     res.status(500).json({ err: error })
   }
