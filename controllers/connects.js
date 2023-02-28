@@ -22,8 +22,13 @@ async function index(req, res) {
 async function update(req, res) {
   try {
     const appEntry = await Connect.findByPk(req.params.id)
-    appEntry.set(req.body)
-    appEntry.save()
+    appEntry.date = req.body.date
+    appEntry.company = req.body.company
+    appEntry.position = req.body.position
+    appEntry.followUp = req.body.followUp
+    appEntry.interview = req.body.interview
+    appEntry.response = req.body.response
+    await appEntry.save()
     res.status(200).json(appEntry)
   } catch (error) {
     res.status(500).json({ err: error })
