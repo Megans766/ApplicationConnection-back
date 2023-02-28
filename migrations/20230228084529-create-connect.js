@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       date: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       company: {
         type: Sequelize.STRING
@@ -19,16 +19,22 @@ module.exports = {
         type: Sequelize.STRING
       },
       followUp: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.STRING
       },
       interview: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.STRING
       },
       response: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.STRING
       },
       profileId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Profiles',
+          key: 'id',
+        },
       },
       createdAt: {
         allowNull: false,

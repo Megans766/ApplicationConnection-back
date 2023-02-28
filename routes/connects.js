@@ -16,4 +16,3 @@ router.put('/:id', checkAuth, connectsCtrl.update)
 router.delete('/:id', checkAuth, connectsCtrl.delete)
 
 module.exports = router
-

@@ -10,16 +10,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Connect.belongsTo(models.Profile, { foreignKey: 'profileId' })
+      // define association here
     }
   }
   Connect.init({
-    date: DataTypes.DATE,
+    date: DataTypes.STRING,
     company: DataTypes.STRING,
     position: DataTypes.STRING,
-    followUp: DataTypes.BOOLEAN,
-    interview: DataTypes.BOOLEAN,
-    response: DataTypes.BOOLEAN,
+    followUp: DataTypes.STRING,
+    interview: DataTypes.STRING,
+    response: DataTypes.STRING,
     profileId: {
       type: DataTypes.INTEGER,
       allowNull: false,
